@@ -131,10 +131,6 @@ The project utilizes four datasets.
 
 ---
 
-## 📸 Dashboard Screenshots
-
-> ⚠️ **Setup note:** Add your two dashboard screenshots to an `images/` folder in this repo (e.g. `images/executive_overview.png` and `images/regional_operational_performance.png`), matching the file names below. This keeps the images permanent — GitHub's auto-generated preview links expire and will eventually show as broken.
-
 ### Executive Overview
 <img width="1312" height="737" alt="image" src="https://github.com/user-attachments/assets/2ed3e88f-c8d8-4500-94b1-6bfc000bf3a2" />
 
