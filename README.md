@@ -1,5 +1,9 @@
 # 📊 Retail Sales Performance Dashboard | Power BI
 
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
+![DAX](https://img.shields.io/badge/DAX-Data%20Modeling-blue)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
+
 ## 📌 Project Overview
 
 This Power BI dashboard was developed to help a regional sales company monitor business performance, evaluate category-wise target achievement, identify operational risks, and support data-driven decision-making.
@@ -7,478 +11,182 @@ This Power BI dashboard was developed to help a regional sales company monitor b
 The dashboard transforms raw sales, returns, targets, and regional management data into actionable business insights through interactive visualizations and KPI tracking.
 
 ### Business Objectives
-
-* Analyze Year-over-Year (YoY) Sales and Profit Growth
-* Monitor Category and Regional Performance
-* Track Target Achievement across product categories
-* Identify Return-related Profit Leakage
-* Evaluate Operational Efficiency
-* Support Monthly Leadership Reviews with actionable insights
+- Analyze Year-over-Year (YoY) Sales and Profit Growth
+- Monitor Category and Regional Performance
+- Track Target Achievement across product categories
+- Identify Return-related Profit Leakage
+- Evaluate Operational Efficiency
+- Support Monthly Leadership Reviews with actionable insights
 
 ---
 
-# 🎯 Problem Statement
+## 🎯 Problem Statement
 
 A regional sales company operates across multiple regions and product categories. Each Regional Manager is assigned category-specific sales targets and is evaluated based on both revenue generation and target achievement.
 
 Despite overall business growth, leadership faces several challenges:
+- Difficulty tracking category-wise target achievement
+- Limited visibility into regional performance
+- Increasing product returns affecting profitability
+- Concerns regarding delivery efficiency
+- Manual reporting processes that are time-consuming and difficult to interpret
 
-* Difficulty tracking category-wise target achievement
-* Limited visibility into regional performance
-* Increasing product returns affecting profitability
-* Concerns regarding delivery efficiency
-* Manual reporting processes that are time-consuming and difficult to interpret
-
-The objective of this project is to build an analytical dashboard that tells a complete business story—from overall company performance to the root causes behind operational challenges.
+The objective of this project is to build an analytical dashboard that tells a complete business story — from overall company performance to the root causes behind operational challenges.
 
 ---
 
-# 📂 Data Sources
+## 📂 Data Sources
 
 The project utilizes four datasets.
 
-## 1️⃣ Orders Data
+**1. Orders Data** — historical sales transactions (`order_2015`, `order_2016`, `order_2017`, `order_2018`)
 
-Historical sales transactions from:
+| Column | Column | Column |
+|---|---|---|
+| Order ID | Customer Name | Product ID |
+| Order Date | Segment | Category |
+| Ship Date | City | Sub-Category |
+| Ship Mode | State | Product Name |
+| Customer ID | Country / Region | Sales, Quantity, Discount, Profit |
 
-* `order_2015`
-* `order_2016`
-* `order_2017`
-* `order_2018`
+**2. People Data** — Region, People (regional manager mapping)
 
-### Columns
+**3. Returns Data** — Order ID, Returned
 
-| Column        |
-| ------------- |
-| Order ID      |
-| Order Date    |
-| Ship Date     |
-| Ship Mode     |
-| Customer ID   |
-| Customer Name |
-| Segment       |
-| City          |
-| State         |
-| Country       |
-| Region        |
-| Product ID    |
-| Category      |
-| Sub-Category  |
-| Product Name  |
-| Sales         |
-| Quantity      |
-| Discount      |
-| Profit        |
+**4. Target Data** — Category, Year, Sales Target
 
 ---
 
-## 2️⃣ People Data
+## 🛠 Data Preparation
 
-Regional manager information.
-
-| Column |
-| ------ |
-| Region |
-| People |
-
----
-
-## 3️⃣ Returns Data
-
-Order return information.
-
-| Column   |
-| -------- |
-| Order ID |
-| Returned |
+1. **Data Consolidation** — Appended all yearly order files into a single Orders table
+2. **Data Cleaning** — Corrected column data types; removed duplicate Order IDs from Returns data
+3. **Composite Key Creation** — Built a `CategoryYear` column to relate Orders to the Target table
+4. **Date Table Creation** — Dedicated Date Table with Year, Month, Month Number, Quarter
+5. **Data Modeling** — Star-schema relationships between Orders, Returns, People, Target, and the Date Table
+6. **DAX Development** — Total Sales, Total Profit, Total Orders, Sales YoY Growth %, Profit YoY Growth %, Returns YoY %, Return Rate, Target Achievement %, Target Gap, Sales vs Target
 
 ---
 
-## 4️⃣ Target Data
+## 📈 Dashboard Analysis
 
-Annual sales targets by category.
+### 🏆 Page 1: Executive Overview
 
-| Column       |
-| ------------ |
-| Category     |
-| Year         |
-| Sales Target |
+**KPIs:** Total Sales, Sales YoY Growth %, Total Orders, Total Profit, Profit YoY Growth %, Return Rate, Returns YoY %, Total Target, Target Gap, Target Achievement %
 
----
+**Visualizations:** KPI cards · Sales & Profit trend (monthly/quarterly) · Sales Performance Matrix (Category, Total Sales, Sales PY, YoY Growth %) · Profit Performance Matrix (Category, Total Profit, Profit PY, YoY Growth %)
 
-# 🛠 Data Preparation
+**Key Insights:**
 
-The following ETL and modeling steps were performed:
+| Finding | Detail |
+|---|---|
+| 🚀 Strong business growth | Total Sales reached **$2.94M** (+55% YoY); Total Profit reached **$372.83K** (+53% YoY) |
+| 🎯 Target achievement | **101.66%** — revenue exceeded target by **$48.09K** |
+| ⚙ Operational efficiency | Orders grew **50% YoY** with a stable return rate |
+| 💻 Technology as growth driver | **$1.1M+** in sales, **59% YoY growth**; South Region contributed 67% of that growth |
+| 📦 Office Supplies as profit leader | ~**$160K profit**; South Region delivered 74% profit growth |
+| ⚠ Furniture — category of concern | Lowest sales and profit contribution, slowest growth of the three categories |
+| 🚨 North Region furniture risk | Sales +57% but profit only +17% — signals excessive discounting, high logistics cost, or product-mix issues |
 
-### 1. Data Consolidation
+### 🌎 Page 2: Regional & Operational Performance
 
-* Appended all yearly order files into a single **Orders** table.
+**KPIs:** Return Rate, Returns YoY %, Total Returns, Region Sales, Target Gap, Target Achievement %
 
-### 2. Data Cleaning
+**Visualizations:** Category Performance Matrix · Shipping Mode Analysis (stacked bar) · Returns Trend Analysis (clustered column, YoY monthly comparison)
 
-* Corrected column data types.
-* Removed duplicate Order IDs from Returns data.
+**Key Insights:**
 
-### 3. Composite Key Creation
-
-* Created **CategoryYear** column.
-* Used to establish relationship with Target table.
-
-### 4. Date Table Creation
-
-Created a dedicated Date Table containing:
-
-* Year
-* Month
-* Month Number
-* Quarter
-
-### 5. Data Modeling
-
-Established relationships between:
-
-* Orders
-* Returns
-* People
-* Target
-* Date Table
-
-### 6. DAX Development
-
-Created measures for:
-
-* Total Sales
-* Total Profit
-* Total Orders
-* Sales YoY Growth %
-* Profit YoY Growth %
-* Returns YoY %
-* Return Rate
-* Target Achievement %
-* Target Gap
-* Sales vs Target
+| Finding | Detail |
+|---|---|
+| 🏆 Technology & Office Supplies exceeded targets | Technology: **148.36%**, Office Supplies: **139.51%** achievement |
+| ❌ Furniture missed target | Target: $850K → Achieved only **91.66%**, despite the highest target allocation |
+| 🔄 Furniture return risk | **6.50%** return rate — highest of all categories, driving up reverse-logistics cost |
+| 🚚 Shipping dependency | Standard Class handles the majority of shipments; Same Day/First Class are a small share — a single-point operational dependency |
+| 📈 Rising returns | Returns increased **54.35% YoY**, a trend that needs monitoring before it erodes margins further |
 
 ---
 
-# 📈 Dashboard Analysis
+## 💡 Strategic Recommendations
+
+1. **Audit the Standard Class shipping pipeline** — review packaging quality for bulky furniture, identify fulfillment issues driving returns
+2. **Optimize warehouse operations** — Office Supplies drives the largest return volume; tighten order verification and QC
+3. **Review Furniture pricing strategy** — reassess discounting in the North Region so revenue growth actually converts to profit growth
+4. **Improve customer experience** — better product descriptions, delivery accuracy, after-sales support
+5. **Leverage high-performing categories** — apply what's working in Technology and Office Supplies to underperforming lines
 
 ---
 
-# 🏆 Page 1: Executive Overview
-
-## KPIs
-
-* Total Sales
-* Sales YoY Growth %
-* Total Orders
-* Total Profit
-* Profit YoY Growth %
-* Return Rate
-* Returns YoY %
-* Total Target
-* Target Gap
-* Target Achievement %
-
-## Visualizations
-
-### KPI Cards
-
-Executive-level performance summary.
-
-### Sales & Profit Trend Analysis
-
-* Sales & Profit by Month
-* Sales & Profit by Quarter
-
-### Sales Performance Matrix
-
-* Category
-* Total Sales
-* Sales PY
-* Sales YoY Growth %
-
-### Profit Performance Matrix
-
-* Category
-* Total Profit
-* Profit PY
-* Profit YoY Growth %
-
----
-
-## Key Insights
-
-### 🚀 Strong Business Growth
-
-* Total Sales reached **$2.94M**
-* Sales increased by **55% YoY**
-* Total Profit reached **$372.83K**
-* Profit increased by **53% YoY**
-
-The company achieved strong and sustainable growth while maintaining profitability.
-
----
-
-### 🎯 Target Achievement
-
-* Target Achievement reached **101.66%**
-* Revenue exceeded target by **$48.09K**
-
-The organization successfully surpassed its overall sales target.
-
----
-
-### ⚙ Operational Efficiency
-
-* Orders increased by **50% YoY**
-* Return Rate remained stable
-
-Growth was achieved without a significant deterioration in product returns.
-
----
-
-### 💻 Technology: Growth Driver
-
-* Generated over **$1.1M Sales**
-* Achieved **59% YoY Growth**
-* South Region contributed **67% Growth**
-
-Technology emerged as the primary revenue engine.
-
----
-
-### 📦 Office Supplies: Profit Leader
-
-* Generated approximately **$160K Profit**
-* South Region delivered **74% Profit Growth**
-
-Office Supplies was the strongest contributor to profitability.
-
----
-
-### ⚠ Furniture: Category of Concern
-
-* Lowest sales contribution
-* Lowest profit contribution
-* Slowest growth among categories
-
-Furniture presents the largest improvement opportunity.
-
----
-
-### 🚨 North Region Furniture Risk
-
-* Sales increased by **57%**
-* Profit increased by only **17%**
-
-Potential reasons:
-
-* Excessive discounting
-* High logistics costs
-* Product mix issues
-* Operational inefficiencies
-
----
-
-# 🌎 Page 2: Regional & Operational Performance
-
-## KPIs
-
-* Return Rate
-* Returns YoY %
-* Total Returns
-* Region Sales
-* Target Gap
-* Target Achievement %
-
-## Visualizations
-
-### Category Performance Matrix
-
-* Total Sales
-* Total Profit
-* Total Returns
-* Return Rate
-* Total Target
-* Target Achievement %
-
-### Shipping Mode Analysis
-
-Stacked Bar Chart:
-
-* Total Orders by Shipping Mode
-
-### Returns Trend Analysis
-
-Clustered Column Chart:
-
-* Total Returns
-* Returns PY
-* Monthly Comparison
-
----
-
-## Key Insights
-
-### 📊 Uneven Category Performance
-
-Overall company performance exceeded expectations; however, category-level analysis revealed performance gaps.
-
----
-
-### 🏆 Technology & Office Supplies Exceeded Targets
-
-| Category        | Target Achievement |
-| --------------- | ------------------ |
-| Technology      | 148.36%            |
-| Office Supplies | 139.51%            |
-
-These categories were responsible for driving overall target achievement.
-
----
-
-### ❌ Furniture Missed Target
-
-* Assigned Target: **850K**
-* Achievement: **91.66%**
-
-Furniture failed to meet expectations despite receiving the highest target allocation.
-
----
-
-### 🔄 Furniture Return Risk
-
-* Return Rate: **6.50%**
-
-The highest return rate among all categories, resulting in increased reverse logistics costs and reduced profitability.
-
----
-
-### 🚚 Shipping Dependency
-
-* Standard Class handled the majority of shipments.
-* Same Day and First Class represented a small share of total orders.
-
-Operational efficiency is heavily dependent on Standard Class fulfillment.
-
----
-
-### 📈 Rising Returns
-
-* Returns increased by **54.35% YoY**
-
-This trend requires immediate attention to prevent future margin erosion.
-
----
-
-# 💡 Strategic Recommendations
-
-## 1. Audit the Standard Class Shipping Pipeline
-
-* Review packaging quality for bulky furniture items.
-* Identify fulfillment issues causing high return rates.
-* Reduce reverse logistics costs.
-
----
-
-## 2. Optimize Warehouse Operations
-
-Office Supplies accounts for the largest volume of returns.
-
-Focus on:
-
-* Order verification
-* Packing accuracy
-* Quality control procedures
-
----
-
-## 3. Review Furniture Pricing Strategy
-
-* Reassess discount structures.
-* Evaluate pricing models in the North Region.
-* Ensure revenue growth translates into profit growth.
-
----
-
-## 4. Improve Customer Experience
-
-* Enhance product descriptions.
-* Improve delivery accuracy.
-* Strengthen after-sales support.
-
----
-
-## 5. Leverage High-Performing Categories
-
-Continue investing in:
-
-* Technology
-* Office Supplies
-
-Apply successful practices to underperforming categories.
-
----
-
-# 📊 Expected Business Impact
-
-Implementing these recommendations can help:
-
-✅ Reduce return-related costs
-
-✅ Improve profit margins
-
-✅ Increase operational efficiency
-
-✅ Improve customer satisfaction
-
-✅ Strengthen customer trust
-
-✅ Support sustainable long-term growth
-
----
-
-# 🏅 Key Results
-
-| Metric             | Value    |
-| ------------------ | -------- |
-| Total Sales        | $2.94M   |
-| Sales Growth       | 55%      |
-| Total Profit       | $372.83K |
-| Profit Growth      | 53%      |
-| Orders Growth      | 50%      |
-| Target Achievement | 101.66%  |
-| Target Gap         | +$48.09K |
-| Returns Growth     | 54.35%   |
+## 🏅 Key Results
+
+| Metric | Value |
+|---|---|
+| Total Sales | $2.94M |
+| Sales Growth | 55% YoY |
+| Total Profit | $372.83K |
+| Profit Growth | 53% YoY |
+| Orders Growth | 50% YoY |
+| Target Achievement | 101.66% |
+| Target Gap | +$48.09K |
+| Returns Growth | 54.35% YoY |
 
 ---
 
 ## 📸 Dashboard Screenshots
 
+> ⚠️ **Setup note:** Add your two dashboard screenshots to an `images/` folder in this repo (e.g. `images/executive_overview.png` and `images/regional_operational_performance.png`), matching the file names below. This keeps the images permanent — GitHub's auto-generated preview links expire and will eventually show as broken.
+
 ### Executive Overview
-
-<img width="1318" height="742" alt="image" src="https://github.com/user-attachments/assets/67ba53ab-3cb8-4795-a32a-2325e080f60a" />
-
+![Executive Overview](images/executive_overview.png)
 
 ### Regional & Operational Performance
-
-<img width="1316" height="743" alt="image" src="https://github.com/user-attachments/assets/13d47782-9fd5-424c-aedf-1cd85282a5e5" />
-
+![Regional & Operational Performance](images/regional_operational_performance.png)
 
 ---
 
-## 🚀 Tools Used
+## 🧠 Skills Demonstrated
 
-* Power BI
-* Power Query
-* DAX
-* Data Modeling
-* Business Analytics
+`Data Modeling` · `DAX` · `Power Query (ETL)` · `Star-Schema Design` · `KPI & Target Tracking` · `Root-Cause Analysis` · `Business Storytelling` · `Executive Reporting`
 
 ---
 
-### Author
+## 📁 Repository Structure
 
-**Karan Kumar**
+```
+Retail_SalesData_PowerBI_Dashboard/
+│
+├── Karan_Kumar_Sahu_PowerBI_Submission.pbix   # Power BI report file
+├── README.md                                  # Project documentation (this file)
+├── order_2015.csv / order_2016.csv / order_2017.csv / order_2018.csv
+├── Returns.csv
+├── Target.csv
+├── People.csv
+├── Power BI Walkthrough & Performance Analysis Companion.pptx
+└── images/
+    ├── executive_overview.png
+    └── regional_operational_performance.png
+```
 
-Power BI | SQL | Data Analytics
+---
+
+## 🚀 How to Use
+
+1. Clone this repository
+2. Open the `.pbix` file in Power BI Desktop
+3. Use the slicers/filters on each page to explore performance by category, region, and time period
+4. Refer to the accompanying `Power BI Walkthrough & Performance Analysis Companion.pptx` for a guided walkthrough of the analysis
+
+---
+
+## 🔮 Future Improvements
+
+- Add a drill-through page for Sub-Category level analysis within Furniture to pinpoint the exact SKUs driving the 6.5% return rate
+- Incorporate discount % as an explicit variable to test the hypothesis that North Region's profit lag is discount-driven
+- Add a forecasting visual (e.g., linear trend or exponential smoothing) for next-quarter sales by category
+
+---
+
+## 👤 Author
+
+**Karan Kumar Sahu**
+Data Analyst | SQL · Python · Power BI
+[LinkedIn](#) · [GitHub](https://github.com/Karan09823) · [Portfolio](#)
