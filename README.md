@@ -136,10 +136,12 @@ The project utilizes four datasets.
 > ⚠️ **Setup note:** Add your two dashboard screenshots to an `images/` folder in this repo (e.g. `images/executive_overview.png` and `images/regional_operational_performance.png`), matching the file names below. This keeps the images permanent — GitHub's auto-generated preview links expire and will eventually show as broken.
 
 ### Executive Overview
-![Executive Overview](images/executive_overview.png)
+<img width="1312" height="737" alt="image" src="https://github.com/user-attachments/assets/2ed3e88f-c8d8-4500-94b1-6bfc000bf3a2" />
+
 
 ### Regional & Operational Performance
-![Regional & Operational Performance](images/regional_operational_performance.png)
+<img width="1317" height="742" alt="image" src="https://github.com/user-attachments/assets/a1b7dbf5-2e9d-4704-94b9-71a5e1f9aacf" />
+
 
 ---
 
@@ -189,4 +191,3 @@ Retail_SalesData_PowerBI_Dashboard/
 
 **Karan Kumar Sahu**
 Data Analyst | SQL · Python · Power BI
-[LinkedIn](#) · [GitHub](https://github.com/Karan09823) · [Portfolio](#)
