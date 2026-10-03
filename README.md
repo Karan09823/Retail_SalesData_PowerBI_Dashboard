@@ -6,13 +6,13 @@
 
 ## 📌 Project Overview
 
-This Power BI dashboard was developed to help a regional sales company monitor business performance, evaluate category-wise target achievement, identify operational risks, and support data-driven decision-making.
+This Power BI dashboard was developed to help a regional sales company monitor business performance across a 4-year historical period (2015–2018), evaluate category-wise target achievement, identify operational risks, and support data-driven decision-making.
 
 The dashboard transforms raw sales, returns, targets, and regional management data into actionable business insights through interactive visualizations and KPI tracking.
 
 ### Business Objectives
 - Analyze Year-over-Year (YoY) Sales and Profit Growth
-- Monitor Category and Regional Performance
+- Monitor Category, Customer Segment, and Regional Performance
 - Track Target Achievement across product categories
 - Identify Return-related Profit Leakage
 - Evaluate Operational Efficiency
@@ -26,8 +26,8 @@ A regional sales company operates across multiple regions and product categories
 
 Despite overall business growth, leadership faces several challenges:
 - Difficulty tracking category-wise target achievement
-- Limited visibility into regional performance
-- Increasing product returns affecting profitability
+- Limited visibility into regional performance and customer segment contributions
+- Increasing product returns and aggressive discounting affecting profitability
 - Concerns regarding delivery efficiency
 - Manual reporting processes that are time-consuming and difficult to interpret
 
@@ -64,7 +64,60 @@ The project utilizes four datasets.
 3. **Composite Key Creation** — Built a `CategoryYear` column to relate Orders to the Target table
 4. **Date Table Creation** — Dedicated Date Table with Year, Month, Month Number, Quarter
 5. **Data Modeling** — Star-schema relationships between Orders, Returns, People, Target, and the Date Table
-6. **DAX Development** — Total Sales, Total Profit, Total Orders, Sales YoY Growth %, Profit YoY Growth %, Returns YoY %, Return Rate, Target Achievement %, Target Gap, Sales vs Target
+6. **DAX Development** — Total Sales, Total Profit, Total Orders, Sales YoY Growth %, Profit YoY Growth %, Returns YoY %, Return Rate, Target Achievement %, Target Gap, Average Discount %
+
+---
+
+## 📈 Dashboard Analysis
+
+### 🏆 Page 1: Executive Overview
+
+**KPIs:** Total Sales, Sales YoY Growth %, Total Orders, Total Profit, Profit YoY Growth %, Return Rate, Returns YoY %, Total Target, Target Gap, Target Achievement %
+
+**Visualizations:** KPI cards · Sales & Profit trend (monthly/quarterly) · Sales Contribution by Segment (Donut Chart) · Sales Performance Matrix · Profit Performance Matrix
+
+**Key Insights:**
+
+| Finding | Detail |
+|---|---|
+| 🚀 Strong business growth | Total Sales reached **$2.94M (2015-2018)** (+55% YoY); Total Profit reached **$372.83K** (+53% YoY) |
+| 👥 Customer Segments | The **Consumer** segment drives the highest share of the $2.94M revenue, followed by Corporate and Home Office clients. |
+| 🎯 Target achievement | **101.66%** — revenue exceeded target by **$48.09K** |
+| 💻 Technology as growth driver | **$1.1M+** in sales, **59% YoY growth**; South Region contributed 67% of that growth |
+| 📦 Office Supplies as profit leader | ~**$160K profit**; South Region delivered 74% profit growth |
+| 🚨 North Region furniture risk | Sales +57% but profit only +17% — signaling margin erosion at the regional level |
+
+### 🌎 Page 2: Regional & Operational Performance
+
+**KPIs:** Return Rate, Returns YoY %, Total Returns, Region Sales, Target Gap, Target Achievement %, Average Discount %
+
+**Visualizations:** Category Performance Matrix · Shipping Mode Analysis (stacked bar) · Returns Trend Analysis (clustered column, YoY monthly comparison)
+
+**Key Insights:**
+
+| Finding | Detail |
+|---|---|
+| ❌ The Target Allocation Flaw | Furniture received the **highest target allocation ($850K)** despite being the lowest-margin category. It only achieved 91.66%. |
+| 📉 Margin Erosion Verified | North Region Furniture profit lagged behind sales growth due to high markdowns. Analysis of **Average Discount %** confirms aggressive discounting is eroding baseline profitability. |
+| 🔄 Furniture return risk | **6.50%** return rate — highest of all categories, driving up reverse-logistics cost |
+| 🚚 Shipping dependency | Standard Class handles the majority of shipments; Same Day/First Class are a small share — a single-point operational dependency |
+| 📈 Rising returns | Returns increased **54.35% YoY**, a trend that needs monitoring before it erodes margins further |
+
+---
+
+## 💡 Strategic Recommendations
+
+1. **Realign Sales Targets** — Leadership should shift target weight away from low-margin Furniture and allocate higher targets to high-growth, high-profit categories like Technology and Office Supplies.
+2. **Review North Region Pricing** — The data proves that aggressive discounting is eroding North Region Furniture profits. Implement stricter markdown thresholds to ensure revenue growth actually converts to profit.
+3. **Audit the Standard Class shipping pipeline** — Review packaging quality for bulky furniture and identify fulfillment issues driving the 6.5% return rate.
+4. **Optimize warehouse operations** — Office Supplies drives the largest return *volume*; tighten order verification and QC processes.
+5. **Improve customer experience** — Enhance product descriptions, delivery accuracy, and after-sales support to combat the 54.35% YoY rise in returns.
+
+---
+
+## 🧠 Skills Demonstrated
+
+`Data Modeling` · `DAX` · `Power Query (ETL)` · `Star-Schema Design` · `KPI & Target Tracking` · `Root-Cause Analysis` · `Business Storytelling` · `Executive Reporting`
 
 ---
 
