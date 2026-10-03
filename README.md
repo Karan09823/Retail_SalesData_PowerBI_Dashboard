@@ -115,82 +115,12 @@ The project utilizes four datasets.
 
 ---
 
-## 🧠 Skills Demonstrated
-
-`Data Modeling` · `DAX` · `Power Query (ETL)` · `Star-Schema Design` · `KPI & Target Tracking` · `Root-Cause Analysis` · `Business Storytelling` · `Executive Reporting`
-
----
-
-## 📈 Dashboard Analysis
-
-### 🏆 Page 1: Executive Overview
-
-**KPIs:** Total Sales, Sales YoY Growth %, Total Orders, Total Profit, Profit YoY Growth %, Return Rate, Returns YoY %, Total Target, Target Gap, Target Achievement %
-
-**Visualizations:** KPI cards · Sales & Profit trend (monthly/quarterly) · Sales Performance Matrix (Category, Total Sales, Sales PY, YoY Growth %) · Profit Performance Matrix (Category, Total Profit, Profit PY, YoY Growth %)
-
-**Key Insights:**
-
-| Finding | Detail |
-|---|---|
-| 🚀 Strong business growth | Total Sales reached **$2.94M** (+55% YoY); Total Profit reached **$372.83K** (+53% YoY) |
-| 🎯 Target achievement | **101.66%** — revenue exceeded target by **$48.09K** |
-| ⚙ Operational efficiency | Orders grew **50% YoY** with a stable return rate |
-| 💻 Technology as growth driver | **$1.1M+** in sales, **59% YoY growth**; South Region contributed 67% of that growth |
-| 📦 Office Supplies as profit leader | ~**$160K profit**; South Region delivered 74% profit growth |
-| ⚠ Furniture — category of concern | Lowest sales and profit contribution, slowest growth of the three categories |
-| 🚨 North Region furniture risk | Sales +57% but profit only +17% — signals excessive discounting, high logistics cost, or product-mix issues |
-
-### 🌎 Page 2: Regional & Operational Performance
-
-**KPIs:** Return Rate, Returns YoY %, Total Returns, Region Sales, Target Gap, Target Achievement %
-
-**Visualizations:** Category Performance Matrix · Shipping Mode Analysis (stacked bar) · Returns Trend Analysis (clustered column, YoY monthly comparison)
-
-**Key Insights:**
-
-| Finding | Detail |
-|---|---|
-| 🏆 Technology & Office Supplies exceeded targets | Technology: **148.36%**, Office Supplies: **139.51%** achievement |
-| ❌ Furniture missed target | Target: $850K → Achieved only **91.66%**, despite the highest target allocation |
-| 🔄 Furniture return risk | **6.50%** return rate — highest of all categories, driving up reverse-logistics cost |
-| 🚚 Shipping dependency | Standard Class handles the majority of shipments; Same Day/First Class are a small share — a single-point operational dependency |
-| 📈 Rising returns | Returns increased **54.35% YoY**, a trend that needs monitoring before it erodes margins further |
-
----
-
-## 💡 Strategic Recommendations
-
-1. **Audit the Standard Class shipping pipeline** — review packaging quality for bulky furniture, identify fulfillment issues driving returns
-2. **Optimize warehouse operations** — Office Supplies drives the largest return volume; tighten order verification and QC
-3. **Review Furniture pricing strategy** — reassess discounting in the North Region so revenue growth actually converts to profit growth
-4. **Improve customer experience** — better product descriptions, delivery accuracy, after-sales support
-5. **Leverage high-performing categories** — apply what's working in Technology and Office Supplies to underperforming lines
-
----
-
-## 🏅 Key Results
-
-| Metric | Value |
-|---|---|
-| Total Sales | $2.94M |
-| Sales Growth | 55% YoY |
-| Total Profit | $372.83K |
-| Profit Growth | 53% YoY |
-| Orders Growth | 50% YoY |
-| Target Achievement | 101.66% |
-| Target Gap | +$48.09K |
-| Returns Growth | 54.35% YoY |
-
----
-
 ### Executive Overview
 <img width="1312" height="737" alt="image" src="https://github.com/user-attachments/assets/2ed3e88f-c8d8-4500-94b1-6bfc000bf3a2" />
 
 
 ### Regional & Operational Performance
 <img width="1317" height="742" alt="image" src="https://github.com/user-attachments/assets/a1b7dbf5-2e9d-4704-94b9-71a5e1f9aacf" />
-
 
 ---
 
